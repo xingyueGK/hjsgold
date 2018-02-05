@@ -389,10 +389,9 @@ class SaoDangFb(object):
         info = self.action(c='countrymine',m='caikuang',p=3,id=3,t=5)
         timeinfo = info['dateline']
         #采集矿
-        print timeinfo
-        print type(timeinfo)
         if int(timeinfo) == 0 :
             self.action(c='countrymine', m='get_reward',s=3)
+
         else:
             time.sleep(timeinfo+10)
             self.action(c='countrymine', m='get_reward',s=3)
