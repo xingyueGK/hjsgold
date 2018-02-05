@@ -391,7 +391,6 @@ class SaoDangFb(object):
         #采集矿
         if int(timeinfo) == 0 :
             self.action(c='countrymine', m='get_reward',s=3)
-
         else:
             time.sleep(timeinfo+10)
             self.action(c='countrymine', m='get_reward',s=3)
