@@ -36,8 +36,9 @@ class SaoDangFb(object):
         r = requests.post(self.url,headers=headers)
         if r.status_code != 200:
             print r.status_code
+            exit(2)
         else:
-            return r.json()
+            return r.json( encoding="UTF-8")
     def action(self,**kwargs):
         """动作参数m={'index':'获取基础账号密码等信息',‘get_monster_list’：“获取副本怪物列表信息”}
         """

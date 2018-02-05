@@ -192,12 +192,13 @@ class SaoDangFb(object):
             print self.action(c="overseastrade",m='join_team',id=0,place=4,site=2,page=1)
     def tower(self):#将魂星路
         #领取每日奖励
+        self.action(c='tower',m='index')
+        self.action(c='tower',m='get_scene_list')
         self.action(c='tower',m='reward_info')
         self.action(c='tower',m='get_reward')
         #获取次数：
         self.tower_times = self.action(c='tower',m='get_mission_list',s=7)['times']
-        print self.action(c='tower',m='mop_up',id=174,times=self.tower_times)
-
+        self.action(c='tower',m='mop_up',id=174,times=self.tower_times)
     def business(self):#
         #获取通商次数
         business_times = self.action(c='business',m='index')['times']
@@ -269,7 +270,7 @@ class SaoDangFb(object):
         self.times = self.action(c='heaven',m='index')['times']
         if self.times:
             self.action(c='heaven',m='mop_up',id=87,times = self.times)
-    def arena(self):#
+    def arena(self):#竞技场奖励
         self.action(c='arena', m='index')
         self.action(c='arena',m='get_reward')
     def zimap(self):#获取图片
