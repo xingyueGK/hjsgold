@@ -377,7 +377,7 @@ class SaoDangFb(object):
             print sleep_time
             time.sleep(sleep_time*50)
         #print self.action(c='act_sword',m='battle',touid='260000484980')
-    def awaken_copy(self):#每日
+    def awaken_copy(self):#每日觉醒
         self.action(c='awaken_copy',m='index')
         self.action(c='awaken_copy',m='every_reward_index')
         self.action(c='awaken_copy',m='get_every_reward',b=1)

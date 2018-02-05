@@ -150,5 +150,17 @@ class activity(SaoDangFb):
 def main():
     action = activity(num=21,user='xingyue123',passwd='413728161')
     action.tower()
+    action.overseastrade()
+    action.business()
+    action.worldboss()
+    action.herothrone()
+    action.island()
+    action.qiandao()
+    action.hitegg()
+    action.arena()
+    action.lottery()
+    action.generaltask()
+    action.sanctum()
+    action.heaven()
 if __name__ == '__main__':
     main()
