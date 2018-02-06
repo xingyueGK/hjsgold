@@ -2,7 +2,7 @@
 import threading
 import time
 
-import activity
+import activ
 from shujufenx import fuben
 
 """竞速步骤

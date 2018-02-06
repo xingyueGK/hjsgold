@@ -42,8 +42,16 @@ class country(SaoDangFb):
     def country(self):#每日国家奖励
         self.action(c='country',m='get_salary')
     def countrysacrifice(self):#每日贡献
-        print self.action(c='countrysacrifice', m='index', id=1)
-        print self.action(c='countrysacrifice',m='action',id=1)
+        self.action(c='countrysacrifice', m='index', id=1)
+        self.action(c='countrysacrifice',m='action',id=1)
+    def guoyan(self):#每日任务
+        index=self.action(c='banquet',m='index')#首页
+        if index['list']:
+            id=index['list'][0]['caption']
+            self.action(c='banquet',m='join_team',id=id)#加入宴会
+        else:
+            self.action(c='banquet', m='create_team', id=1)  # 创建宴会
+
 def main():
     action = country(num=21, user='xingyue123', passwd='413728161')
     action.country()
