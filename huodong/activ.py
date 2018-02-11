@@ -5,6 +5,7 @@ import time
 import shujufenx
 from shujufenx import fuben
 
+
 """每日不定期开展活动"""
 def  heishi(username,password):
     act= shujufenx.fuben(username, password)
@@ -88,8 +89,8 @@ class activity(fuben):
         print  self.action(c='message',m='get_notice')
     def cuju(self):#蹴鞠首页
         self.action(c='act_kemari',m='index')
-        self.action(c='act_kemari',m='action',type=1)
-        # self.action(c='act_kemari',m='action',type=2)
+        #self.action(c='act_kemari',m='action',type=1)
+        self.action(c='act_kemari',m='action',type=2)
     def gongxiang(self):#国家贡献
         self.action(c='country',m='get_member_list')
         self.action(c='country',m='storage')
@@ -152,22 +153,22 @@ if __name__ == '__main__':
         #action.jinyan()
         #action.cuju()
         #action.generalpool()
-        #action.fuka()
-        action.business()
+        action.fuka()
+        # action.business()
         action.zhengshou()
         for i in range(10):
             action.gongxiang()
-        action.messages()
+        # action.messages()
     def pak(user,apass):#节节高买突飞
-        action = activity(user,apass)
+        action  = activity(user,apass)
         action.morra()
     def zhujian(user, apass):
         while True:
             action = activity(user, apass)
             action.act_sword()
-    with open('../users/alluser.txt', 'r') as f:
+    with open('../users/user.txt', 'r') as f:
         for i in f:
             str = i.strip()
             name = str + 'yue123a'
-            t1 = threading.Thread(target=act, args=(name,'413728161'))
+            t1 = threading.Thread(target=zhujian, args=(name,'413728161'))
             t1.start()

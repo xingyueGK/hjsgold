@@ -30,15 +30,23 @@ class country(SaoDangFb):
             self.action(c='dice',m='shake_dice')
     def get_countrymine(self):
         #收集矿
-        self.action(c='countrymine',m='index')
-        info = self.action(c='countrymine',m='caikuang',p=3,id=3,t=5)
-        timeinfo = info['dateline']
-        #采集矿
-        if int(timeinfo) == 0 :
-            self.action(c='countrymine', m='get_reward',s=3)
+        index = self.action(c='countrymine',m='index')
+
+        if index['log']['page'] != '0':
+            print '等待收矿{}秒'.format(int(index['list'][2]['time'] + 1))
+            time.sleep(int(index['list'][2]['time'] + 1))
+            print self.action(c='countrymine', m='get_reward', s=3)
         else:
-            time.sleep(timeinfo+10)
-            self.action(c='countrymine', m='get_reward',s=3)
+            info = self.action(c='countrymine',m='caikuang',p=3,id=3,t=5)
+            print info
+            timeinfo = info['dateline']
+            #采集矿
+            if int(timeinfo) == 0 :
+                self.action(c='countrymine', m='get_reward',s=3)
+            else:
+                print '等待收矿{}秒'.format(timeinfo + 10)
+                time.sleep(timeinfo + 10)
+                print self.action(c='countrymine', m='get_reward',s=3)
     def country(self):#每日国家奖励
         self.action(c='country',m='get_salary')
     def countrysacrifice(self):#每日贡献
@@ -60,3 +68,6 @@ def main():
     for i in range(3):
         action.get_countrymine()
     action.countryboos()
+if __name__ == '__main__':
+    action = country(num=148, user='xingyue123a', passwd='413728161')
+    action.get_countrymine()
