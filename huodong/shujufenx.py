@@ -273,7 +273,9 @@ class fuben(object):
                 if int(i['status'])==1:#获取奖励
                     self.action(c='mainquest',m='get_task_reward',id=i['task_id'])
                     print '领取奖励',i['task_id']
-
+    def qiandao(self):#签到
+        # 领取连续登陆15天奖励，id:15，c:logined，m:get_reward
+        print self.action(c='logined',m='index')
 
     def soul(self):#武将将魂
         site = [1, 2, 3, 4]
@@ -293,7 +295,7 @@ if __name__ == '__main__':
             action = fuben(user,apass)
             action.act_steadily()
            # action.saodang(9)
-    with open('user.txt', 'r') as f:
+    with open('../users/alluser.txt', 'r') as f:
         for i in f:
             str = i.strip()
             name = str + 'yue123a'

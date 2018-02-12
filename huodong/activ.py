@@ -149,11 +149,13 @@ if __name__ == '__main__':
         #action.pack()
         action.mooncake()
         action.sign()
+        action.qiandao()
         #action.tes()
         #action.jinyan()
         #action.cuju()
         #action.generalpool()
         action.fuka()
+        action.qiandao()
         # action.business()
         action.zhengshou()
         for i in range(10):

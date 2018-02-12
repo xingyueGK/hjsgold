@@ -100,10 +100,10 @@ def fuka(username,passwd):
     action = fuben(username,passwd)
     action.fuka()
 def infogroup(username,passwd):
-    activity.userinfo(username, passwd)
-    activity.heishi(username, passwd)
+    activ.userinfo(username, passwd)
+    activ.heishi(username, passwd)
 def haiyun(username,passwd):
-    a= activity.activity(username, passwd)
+    a= activ.activity(username, passwd)
     a.haiyun()
 def wujiang(username,passwd):#武将训练信息
     action = fuben(username,passwd)
@@ -114,7 +114,7 @@ def wujiang(username,passwd):#武将训练信息
     level = practiceinfo['list']['1']['level']
     print '剩余突飞卡 %s 武将等级 %s 转 %s 级'%(freetimes,turn,level)
 def sign(username,passwd):
-    a= activity.activity(username, passwd)
+    a= activ.activity(username, passwd)
     a.sign()
 def buy(username,passwd):
     action = fuben(username, passwd)
@@ -147,11 +147,11 @@ def genarl(username,passwd):#装备穿戴3级别以上装备
         if equ['quality'] == '3' or equ['quality'] == '4' or equ['quality'] == '5':
             eid1_quality_equipments = equ['id']  # 未穿戴的6级或是5级装备
             action.eqip(gid, eid1_quality_equipments)
-with open('user.txt', 'r') as f:
+with open('../users/alluser.txt', 'r') as f:
     for i in f:
         str = i.strip()
         name = str + 'yue123a'
-        t1 = threading.Thread(target=wujiang,args=(name, '413728161'))
+        t1 = threading.Thread(target=joi,args=(name, '413728161'))
         t1.start()
         time.sleep(0.2)
 
