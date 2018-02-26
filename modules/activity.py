@@ -99,10 +99,10 @@ class activity(SaoDangFb):
     def generaltask(self):#每日神将
         self.number = self.action(c='generaltask',m='index')['number']#获取次数
         print '开始神将扫荡，共计 %s 次'%self.number
-        #使用长孙无忌gid=210000353508
+        #使用魔张亮gid=251000020801
         #怪物id=255
         for count in range(int(self.number)):
-             self.action(type=0,id=255,gid='210000398930',c='generaltask',m='action')
+             self.action(type=0,id=255,gid='251000020801',c='generaltask',m='action')
         print '神将10次扫荡完毕'
     def sanctum(self):
         #每日宝石领奖
@@ -147,6 +147,14 @@ class activity(SaoDangFb):
     def arena(self):#竞技场奖励
         self.action(c='arena', m='index')
         self.action(c='arena',m='get_reward')
+    def xinnian(self):#新年活动
+        index = self.action(c='act_spring',m='sacrifice_index',v=2018021101)
+        if index['price']['1']['1']< "60":
+            self.action(c='act_spring', m='sacrifice', type=1, resource_type=1)
+        if index['price']['2']['1']< "60":
+            self.action(c='act_spring', m='sacrifice', type=2, resource_type=1)
+        if index['price']['3']['1']< "60":
+            self.action(c='act_spring', m='sacrifice', type=3, resource_type=1)
 def main():
     action = activity(num=21,user='xingyue123',passwd='413728161')
     action.tower()

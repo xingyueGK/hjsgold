@@ -275,7 +275,22 @@ class fuben(object):
                     print '领取奖励',i['task_id']
     def qiandao(self):#签到
         # 领取连续登陆15天奖励，id:15，c:logined，m:get_reward
-        print self.action(c='logined',m='index')
+            self.action(c='logined',m='index')
+            self.action(c='logined',m='get_reward',id=1,v=2018021101)
+            self.action(c='logined', m='get_reward', id=2, v=2018021101)
+            self.action(c='logined', m='get_reward', id=3, v=2018021101)
+            self.action(c='logined', m='get_reward', id=4, v=2018021101)
+            self.action(c='logined', m='get_reward', id=5, v=2018021101)
+            self.action(c='logined', m='get_reward', id=6, v=2018021101)
+            self.action(c='logined', m='get_reward', id=7, v=2018021101)
+            self.action(c='logined', m='get_reward', id=8, v=2018021101)
+            self.action(c='logined', m='get_reward', id=9, v=2018021101)
+            self.action(c='logined', m='get_reward', id=10, v=2018021101)
+            self.action(c='logined', m='get_reward', id=11, v=2018021101)
+            self.action(c='logined', m='get_reward', id=12, v=2018021101)
+            self.action(c='logined', m='get_reward', id=13, v=2018021101)
+            self.action(c='logined', m='get_reward', id=14, v=2018021101)
+            self.action(c='logined', m='get_reward', id=15, v=2018021101)
 
     def soul(self):#武将将魂
         site = [1, 2, 3, 4]

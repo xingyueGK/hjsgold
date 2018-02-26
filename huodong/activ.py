@@ -88,9 +88,12 @@ class activity(fuben):
     def messages(self):
         print  self.action(c='message',m='get_notice')
     def cuju(self):#蹴鞠首页
-        self.action(c='act_kemari',m='index')
-        #self.action(c='act_kemari',m='action',type=1)
-        self.action(c='act_kemari',m='action',type=2)
+        index = self.action(c='act_kemari',m='index')
+        for i in index['list']:
+            if i['id'] == 2 and i['times'] != 0:
+                self.action(c='act_kemari',m='action',type=1)
+            elif i['id'] == 1 and i['times'] != 0 and i['cd'] == 0:
+                self.action(c='act_kemari',m='action',type=2)
     def gongxiang(self):#国家贡献
         self.action(c='country',m='get_member_list')
         self.action(c='country',m='storage')
@@ -111,7 +114,7 @@ class activity(fuben):
             business_id=self.action(c='business', m='index')['trader'][0]['id']
             self.action(c='business',m='go_business',id=business_id)
         print '通商完成'
-    def jinyan(self):
+    def jinyan(self):#国家谨言
         self.action(c='expostulation',m='get_reward',id=251000004881)
     def act_sword(self):#铸剑
         self.action(c='act_sword', m='start')
@@ -142,24 +145,53 @@ class activity(fuben):
         #         self.action(c='pack',m='sale',id=equ['id'])
         #c=pack&m=sale&id=291000378856 ,出售制定装备
         print self.action(c='pack',m='open_box',id=5,num=40)
+
+    def xinnian(self):  # 新年活动
+        index = self.action(c='act_spring', m='sacrifice_index', v=2018021101)
+        if index['price']['1']['1'] < "50":
+            self.action(c='act_spring', m='sacrifice', type=1, resource_type=1)
+        if index['price']['2']['1'] < "50":
+            self.action(c='act_spring', m='sacrifice', type=2, resource_type=1)
+        if index['price']['3']['1'] < "50":
+            self.action(c='act_spring', m='sacrifice', type=3, resource_type=1)
+    def leigu(self):
+        self.action(c='happy_guoqing',m='get_reward',type=1)
+    def fubi(self):
+        status=1
+        while status == 1:
+            index= self.action(c='act_spring',m='exchange',id=23,v=2018021101)
+            status = index['status']
+    def jianghun(self):
+        index = self.action(c='soul',m='index')
+        info = index['pack']['list']
+        memberInfo = self.action(c='member', m='index')
+        name = memberInfo['nickname']  # 账号
+        for  i in info:
+            if i['name'] in ['穷变战魂','移山战魂','形虚战魂']:
+                print '账号 ',22222
+                print self.username
+    def meiri(self):
+        for i in range(1,16):
+            print self.action(c='logined',m='get_reward',id=1)
+    def chenk(self):
+        self.action(c='chicken',m='vip_index',v=2018021101)
+        print self.action(c='chicken', m='get_vip_reward', id=17)
+        #print self.action(c='chicken', m='get_vip_reward', id=2)
+        #print self.action(c='chicken', m='get_vip_reward', id=3)
+        print self.action(c='act_holiday',m='index',v=2018021101)
+        print self.action(c='act_holiday',m='add_login_reward',v=2018021101)
+    def signs(self):#每日福利签到购买
+        self.action(c='sign',m='get_reward',type=2,id=95)
+    def ivlist(self):
+        print self.action(c='invitation',m='change',code='nifckpm',v=2018021101)
 if __name__ == '__main__':
     def act(user,apass):
         action = activity(user,apass)
-        action.countrysacrifice()
         #action.pack()
-        action.mooncake()
-        action.sign()
-        action.qiandao()
-        #action.tes()
-        #action.jinyan()
-        #action.cuju()
+        #action.mooncake()
+        action.cuju()
         #action.generalpool()
-        action.fuka()
-        action.qiandao()
-        # action.business()
-        action.zhengshou()
-        for i in range(10):
-            action.gongxiang()
+        #action.fuka()
         # action.messages()
     def pak(user,apass):#节节高买突飞
         action  = activity(user,apass)
@@ -168,9 +200,13 @@ if __name__ == '__main__':
         while True:
             action = activity(user, apass)
             action.act_sword()
+    def xinnain(user, apass):
+        action = activity(user, apass)
+        action.leigu()
+        action.xinnian()
     with open('../users/user.txt', 'r') as f:
         for i in f:
             str = i.strip()
             name = str + 'yue123a'
-            t1 = threading.Thread(target=zhujian, args=(name,'413728161'))
+            t1 = threading.Thread(target=userinfo, args=(name,'413728161'))
             t1.start()
