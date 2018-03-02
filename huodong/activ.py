@@ -34,7 +34,7 @@ def sanguo(username, password):#游历三国活动
         result = act.action(c='act_travel', m='action_dice')  # 掷骰子
     if  travelindex['info']['points'] != 0:
         # #走路顺序list[4,2,3,5,8,9,10,11,12,13,14]
-        plain=[1,4,2,3,5,8,9,10,11,12,13,14]
+        plain=[1,4,2,3,5,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
         num = plain.index(int(details['current']))+1
         stats = act.action(c='act_travel',m ='plain' ,point=plain[num])
 class activity(fuben):
@@ -184,6 +184,16 @@ class activity(fuben):
         self.action(c='sign',m='get_reward',type=2,id=95)
     def ivlist(self):
         print self.action(c='invitation',m='change',code='nifckpm',v=2018021101)
+    def shenshu(self):#神树
+        index = self.action(c='sacredtree',m='index')
+        if index['time'] == 1:
+            print self.action(c='sacredtree',m='watering',type=1,v=2018021101)
+    def yuanxiao(self):
+        index = self.action(c='act_lantern',m='index',v=2018021101)
+        if index['freetimes'] >0:
+            self.action(c='act_lantern',m='buy',lid=1,mid=1,v=2018021101)
+            self.action(c='act_lantern', m='buy', lid=1, mid=2, v=2018021101)
+            self.action(c='act_lantern', m='buy', lid=1, mid=3, v=2018021101)
 if __name__ == '__main__':
     def act(user,apass):
         action = activity(user,apass)
@@ -204,9 +214,14 @@ if __name__ == '__main__':
         action = activity(user, apass)
         action.leigu()
         action.xinnian()
-    with open('../users/user.txt', 'r') as f:
+        action.shenshu()
+        action.yuanxiao()
+    def shu(user, apass):
+        action = activity(user, apass)
+        #action.yuanxiao()
+    with open('../users/alluser.txt', 'r') as f:
         for i in f:
             str = i.strip()
             name = str + 'yue123a'
-            t1 = threading.Thread(target=userinfo, args=(name,'413728161'))
+            t1 = threading.Thread(target=xinnain, args=(name,'413728161'))
             t1.start()
