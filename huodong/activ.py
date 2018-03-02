@@ -218,7 +218,7 @@ if __name__ == '__main__':
         action.yuanxiao()
     def shu(user, apass):
         action = activity(user, apass)
-        #action.yuanxiao()
+        action.yuanxiao()
     with open('../users/alluser.txt', 'r') as f:
         for i in f:
             str = i.strip()
