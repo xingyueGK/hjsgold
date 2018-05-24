@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
-import  matrix
 from base import SaoDangFb
 
 
