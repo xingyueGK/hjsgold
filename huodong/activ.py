@@ -194,6 +194,11 @@ class activity(fuben):
             self.action(c='act_lantern',m='buy',lid=1,mid=1,v=2018021101)
             self.action(c='act_lantern', m='buy', lid=1, mid=2, v=2018021101)
             self.action(c='act_lantern', m='buy', lid=1, mid=3, v=2018021101)
+    def actjubao(self):
+        self.action(c = 'actjubao' , m = 'index', v=2018042801)
+        self.action(c = 'actjubao' , m = 'action' , type = 1 , v = 2018042801)
+        self.action(c = 'actjubao' , m = 'reward_index' , v = 2018042801)
+        self.action(c = 'actjubao' , m = 'get_reward' , id = 1 , v = 2018042801)
 if __name__ == '__main__':
     def act(user,apass):
         action = activity(user,apass)
